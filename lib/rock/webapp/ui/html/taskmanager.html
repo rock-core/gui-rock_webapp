@@ -21,8 +21,10 @@
 
 
 <!-- own libs and styles -->
+
 <link rel="stylesheet" type="text/css" media="screen" href="../css/screen.css">
 <link rel="stylesheet" type="text/css" media="handheld" href="../css/phone.css">
+
 
 <!-- <script src="../libs/api/WebSock.js"></script> -->
 <script src="../libs/api/JSON.js"></script>
@@ -32,8 +34,13 @@
 <script src="../libs/gui/Forms.js"></script>
 <script src="../libs/gui/Buttons.js"></script>
 
+<!-- ui elements -->
+<script src="../libs/rock-gui/motion2d.js"></script>
+
 <link rel="stylesheet" type="text/css" href="../css/taskmanager.css">
 <script src="../libs/rock-gui/taskmanager.js"></script>
+
+<script src="../libs/rock-gui/GUIElements.js"></script>
 
 <script>
 function init(){
@@ -41,7 +48,12 @@ function init(){
 	if (window.location.hostname != ""){
 		hostname = window.location.hostname;
 	} 
-	taskmanager('http://'+hostname+':9292',"taskmanager");
+    var api_base = "http://" + hostname + ":9292/api";
+	taskmanager(api_base,"taskmanager");
+	
+	//register additional ui elements to be shown for according input ports 
+	registerInputElement("/base/commands/Motion2D",function(url,id, width, height){motion2d(url,id)});
+	
 }
 </script>
 
