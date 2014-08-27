@@ -46,29 +46,13 @@ function init(){
 	if (window.location.hostname != ""){
 		hostname = window.location.hostname;
 	} 
-	motion2d('http://'+hostname+':9292/tasks/localhost/sherpa_tt_mcs/ports/motion_command_2d',"m2d");
-	//motion2d('http://localhost:9292/tasks/localhost/sherpa_tt_mcs/ports/motion_command_2d',"m2d2");
-	taskmanager('http://'+hostname+':9292',"tskm");
+        var api_base = "http://" + hostname + ":9292/api"
+	taskmanager(api_base,"tskm");
 }
 </script>
 
 </head>
 <body onload="init()">
-
-<table>
-<tr>
-	<td>
-		<div id="tskm"></div>
-	</td><td>
-		<div id="m2d"></div>
-		<div id="m2d2"></div>
-	</td>
-</tr>
-</table>
-
-
-
-
-
+<div id="tskm"></div>
 </body>
 </html>
