@@ -18,7 +18,7 @@ function loadJSON(url,callback){
 /**
  * load JSON formatted data usinf GET
  * @param url
- * @returns Javascript object
+ * @returns loader object where the done function can be redefined
  */
 function getJSONLoader(url){
 	var jsonloader = $.getJSON( url, function() {
@@ -27,8 +27,9 @@ function getJSONLoader(url){
 		.done(function() {
 			//console.log( "done" );
 		})
-		.fail(function() {
-		console.log( "error reading: " + url);
+		.fail(function(err) {
+		console.log( "error reading: \n" + url);
+		alert("error reading: " + url + "\n" +JSON.stringify(err));
 		})
 		.always(function() {
 		//console.log( "complete" );
@@ -50,8 +51,8 @@ function postJSON(url,data){
 		.done(function() {
 		//console.log( "second success" );
 		})
-		.fail(function() {
-		console.log( "error writing :" + url );
+		.fail(function(err) {
+			alert("error writing: \n" + url + "\n" +JSON.stringify(err));
 		})
 		.always(function() {
 		//console.log( "complete" );

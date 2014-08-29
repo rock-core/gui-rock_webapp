@@ -6,18 +6,18 @@
 
 <!-- theme -->
 <!-- download css themes on http://jqueryui.com/themeroller/ -->
-<!-- <link rel="stylesheet" type="text/css" href="../css/jQueryUI/smoothness/jquery-ui.css"> -->
-<link rel="stylesheet" type="text/css" href="../css/jQueryUI/sunny/jquery-ui.css">
+<!-- <link rel="stylesheet" type="text/css" href="../../common/css/jQueryUI/smoothness/jquery-ui.css"> -->
+<link rel="stylesheet" type="text/css" href="../../common/css/jQueryUI/sunny/jquery-ui.css">
 
 <!-- GUI scripts and styles -->
-<link rel="stylesheet" href="../css/gui.css">
-<script src="../libs/gui/Collapsable.js"></script>
+<link rel="stylesheet" href="../../common/css/gui.css">
+<script src="../../common/libs/gui/Collapsable.js"></script>
 
 <!-- external libs -->
-<link rel="stylesheet" href="../libs/external/jquery-jsonview/dist/jquery.jsonview.css" />
-<script src="../libs/external/jquery-2.1.1.js"></script>
-<script src="../libs/external/jquery-ui.js"></script>
-<script type="text/javascript" src="../libs/external/jquery-jsonview/dist/jquery.jsonview.js"></script>
+<link rel="stylesheet" href="../../common/libs/external/jquery-jsonview/dist/jquery.jsonview.css" />
+<script src="../../common/libs/external/jquery-2.1.1.js"></script>
+<script src="../../common/libs/external/jquery-ui.js"></script>
+<script type="text/javascript" src="../../common/libs/external/jquery-jsonview/dist/jquery.jsonview.js"></script>
 
 
 <!-- own libs and styles -->
@@ -26,13 +26,14 @@
 <link rel="stylesheet" type="text/css" media="handheld" href="../css/phone.css">
 
 
-<script src="../libs/api/WebSock.js"></script>
-<script src="../libs/api/JSON.js"></script>
+<script src="../../common/libs/api/WebSock.js"></script>
+<script src="../../common/libs/api/JSON.js"></script>
+<script src="../../common/libs/gui/Buttons.js"></script>
 <script src="../libs/api/Typelib.js"></script>
 <script src="../libs/api/Ports.js"></script>
 <script src="../libs/api/Tasks.js"></script>
 <script src="../libs/gui/Forms.js"></script>
-<script src="../libs/gui/Buttons.js"></script>
+
 
 <!-- ui elements -->
 <script src="../libs/rock-gui/motion2d.js"></script>
@@ -49,7 +50,7 @@ function init(){
 	if (window.location.hostname != ""){
 		hostname = window.location.hostname;
 	} 
-    var api_base = "http://" + hostname + ":9292/api";
+    var api_base = "http://" + hostname + ":9292/api/tasks";
 	taskmanager(api_base,"taskmanager");
 	
 	//register additional ui elements to be shown for according input ports 
