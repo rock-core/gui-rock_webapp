@@ -52,17 +52,21 @@
  -->
 
 <script>
+var hostname = "localhost";
 function init(){
-	var hostname = "localhost";
-	if (window.location.hostname != ""){
-		hostname = window.location.hostname;
-	} 
-	motion2d('http://'+hostname+':9292/tasks/localhost/sherpa_tt_mcs/ports/motion_command_2d',"m2d");
+	var url = document.getElementById("url").value;
+	console.log(url);
+	motion2d(url,"m2d");
 }
+
 </script>
 
 </head>
-<body onload="init();">
+<body>
+<form>
+<input id="url" type="text" value="enter port url"></input>
+<input type="button" value="connect" onclick="init()"></input>
+</form>
 
 <div id="m2d"></div>
 
