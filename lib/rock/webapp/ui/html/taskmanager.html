@@ -36,6 +36,7 @@
 
 <!-- ui elements -->
 <script src="../libs/rock-gui/motion2d.js"></script>
+<script src="../libs/rock-gui/frame.js"></script>
 
 <link rel="stylesheet" type="text/css" href="../css/taskmanager.css">
 <script src="../libs/rock-gui/taskmanager.js"></script>
@@ -53,6 +54,7 @@ function init(){
 	
 	//register additional ui elements to be shown for according input ports 
 	registerInputElement("/base/commands/Motion2D",function(url,id, width, height){motion2d(url,id)});
+	registerOutputElement("/RTT/extras/ReadOnlyPointer</base/samples/frame/Frame>",function(url,id, width, height){frame(url,id)});
 	
 }
 </script>
