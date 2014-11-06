@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>TaskManager</title>
+<title>Actions</title>
 
 <!-- theme -->
 <!-- download css themes on http://jqueryui.com/themeroller/ -->
@@ -35,6 +35,7 @@ function init(){
 	if (window.location.hostname != ""){
 		hostname = window.location.hostname;
 	} 
+	document.title = "actions on " + hostname
     var api_base = "http://" + hostname + ":9292/api/syskit";
 	
     actions(api_base+"/actions","actions");

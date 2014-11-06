@@ -24,14 +24,15 @@ function init(){
 <body onload="init()">
 
 
-Welcome on <span id="hostname"> Server</span><br><br>
+<h2>Welcome on <span id="hostname"> Server</span></h2>
 
-<a href="/ui/tasks/taskmanager.html">open TaskManager</a><br>
-<a href="/ui/syskit/actions.html">open Syskit control</a><br>
+<a href="/ui/tasks/taskmanager.html">TaskManager</a><br>
+<a href="/ui/syskit/actions.html">Syskit control</a><br>
 
-<a href="/ui/control.html">open control panel</a><br>
+<a href="/ui/control.html">Combined Control Panel</a><br>
 
-<h3>Http API</h3>
+
+<h2>Http API</h2>
 
 A JSON viewer plugin for your browser helps to evaluate the data:<br>
 <a href="https://addons.mozilla.org/de/firefox/addon/jsonview/">firefox</a><br>
@@ -41,11 +42,15 @@ A JSON viewer plugin for your browser helps to evaluate the data:<br>
 The list of running tasks
 
 
-<h4><a href="http://localhost:9292/api/tasks/tasks/"></a>+TASKNAME</h4>
-For example:
+<h4><a href="http://localhost:9292/api/tasks/tasks/"></a>http://localhost:9292/api/tasks/tasks/+TASKNAME</h4>
+For example:<br>
 http://localhost:9292/api/tasks/tasks/localhost/sherpa_tt_ft
-
+<br>
 this gives you port names, that can be used to read ports. 
+<br><br>
+http://localhost:9292/api/tasks/tasks?extended_info=true<br>
+Gives you all available task information
+
 
 
 <h4>http://localhost:9292/api/tasks/tasks/+TASKNAME+/ports/+PORTNAME</h4>
@@ -63,6 +68,22 @@ write data to a port (json formatted)
 <h4>http://localhost:9292/api/tasks/tasks/+TASKNAME+/ports/+PORTNAME+/sample</h4>
 only input ports <br>
 get the json format that can be written to the port
+
+
+<h2>Control of rock-based robots using the HTTP API</h2>
+
+To control robots directly, you can use <a href="http://curl.haxx.se/">CURL (or libcurl)</a><br><br>
+
+Request: curl http://localhost:9292/api/syskit/jobs
+Write:   curl -X POST -H "Content-Type: application/json" -d '{"id":9}' http://localhost:9292/api/syskit/jobs/kill<br><br>
+<br>
+
+
+<a href="https://github.com/planthaber/control-webapp">cpp rock control library</a>(no dependencies to rock itself)
+
+
+
+
 
 
 </body>
