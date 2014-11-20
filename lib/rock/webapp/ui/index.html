@@ -85,6 +85,39 @@ Write:   curl -X POST -H "Content-Type: application/json" -d '{"id":9}' http://l
 
 
 
+<h3>Http API</h3>
+
+A JSON viewer plugin for your browser helps to evaluate the data:<br>
+<a href="https://addons.mozilla.org/de/firefox/addon/jsonview/">firefox</a><br>
+<a href="https://chrome.google.com/webstore/detail/jsonview/chklaanhfefbnpoihckbnefhakgolnmc">chrome</a><br>
+
+<h4><a href="http://localhost:9292/api/tasks/tasks">http://localhost:9292/api/tasks/tasks</a></h4>
+The list of running tasks
+
+
+<h4><a href="http://localhost:9292/api/tasks/tasks/"></a>+TASKNAME</h4>
+For example:
+http://localhost:9292/api/tasks/tasks/localhost/sherpa_tt_ft
+
+this gives you port names, that can be used to read ports. 
+
+
+<h4>http://localhost:9292/api/tasks/tasks/+TASKNAME+/ports/+PORTNAME</h4>
+port type information
+
+<h4>http://localhost:9292/api/tasks/tasks/+TASKNAME+/ports/+PORTNAME+/read</h4>
+only output ports <br>
+read the port content
+
+
+<h4>http://localhost:9292/api/tasks/tasks/+TASKNAME+/ports/+PORTNAME+/write</h4>
+only input ports <br>
+write data to a port (json formatted)
+
+<h4>http://localhost:9292/api/tasks/tasks/+TASKNAME+/ports/+PORTNAME+/sample</h4>
+only input ports <br>
+get the json format that can be written to the port
+
 
 </body>
 </html>
