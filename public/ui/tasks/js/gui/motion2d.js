@@ -55,20 +55,20 @@ function getMotion2DHTML(id){
     <table border=0> \
 	<tr> \
 	<td></td> \
-	<td class="clickable"><img src="images/120px-Gnome-go-up.svg.png" alt="forward" onclick="window[\''+id+'\'].translation(0.1);" style="height: 50px; width: 50px;" ></td> \
+	<td class="clickable"><img src="/ui/tasks/images/120px-Gnome-go-up.svg.png" alt="forward" onclick="window[\''+id+'\'].translation(0.1);" style="height: 50px; width: 50px;" ></td> \
 	<td><table> \
 			<tr><td style="float:right;">speed: </td><td><span id="'+id+'translation">0</span></td></tr> \
 			<tr><td style="float:right;">rot: </td><td><span id="'+id+'rotation">0</span></td></tr> \
 		</table></td>\
 	</tr> \
 	<tr> \
-	<td class="clickable"><img src="images/120px-Gnome-go-jump-left.svg.png" alt="left" onclick="window[\''+id+'\'].rotation(0.1);" style="height: 50px; width: 50px;" ></td> \
-	<td class="clickable"><img src="images/120px-Stop_hand.svg.png" alt="stop" onclick="window[\''+id+'\'].stop();" style="height: 50px; width: 50px; "></td> \
-	<td class="clickable"><img src="images/120px-Gnome-go-jump-right2.svg.png" alt="right" onclick="window[\''+id+'\'].rotation(-0.1);" style="height: 50px; width: 50px;" ></td> \
+	<td class="clickable"><img src="/ui/tasks/images/120px-Gnome-go-jump-left.svg.png" alt="left" onclick="window[\''+id+'\'].rotation(0.1);" style="height: 50px; width: 50px;" ></td> \
+	<td class="clickable"><img src="/ui/tasks/images/120px-Stop_hand.svg.png" alt="stop" onclick="window[\''+id+'\'].stop();" style="height: 50px; width: 50px; "></td> \
+	<td class="clickable"><img src="/ui/tasks/images/120px-Gnome-go-jump-right2.svg.png" alt="right" onclick="window[\''+id+'\'].rotation(-0.1);" style="height: 50px; width: 50px;" ></td> \
 	</tr> \
 	<tr> \
 	<td></td> \
-	<td class="clickable"><img src="images/120px-Gnome-go-down.svg.png" alt="backward" onclick="window[\''+id+'\'].translation(-0.1);" style="height: 50px; width: 50px;" ></td> \
+	<td class="clickable"><img src="/ui/tasks/images/120px-Gnome-go-down.svg.png" alt="backward" onclick="window[\''+id+'\'].translation(-0.1);" style="height: 50px; width: 50px;" ></td> \
 	<td></td> \
 	</tr> \
 	</table> \
