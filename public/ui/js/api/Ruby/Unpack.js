@@ -12,7 +12,7 @@ Ruby.unpack = function(rubydata, callback){
 	var buffer = new ArrayBuffer(data.length);
 	
 	//view to fill the ArrayBuffer with uint8
-	var inview = Uint8Array(buffer);
+	var inview = new Uint8Array(buffer);
 	
 	//fill the buffer
 	for (var i = 0;i<=data.length;i++){
@@ -23,11 +23,11 @@ Ruby.unpack = function(rubydata, callback){
 	//return a view according to the given pack code 
 	switch (rubydata.pack_code){
 	case "C": 
-		var view = Uint8Array(buffer);
+		var view = new Uint8Array(buffer);
 		callback(view);
 		break;
 	case "E":
-		var view = Float64Array(buffer);
+		var view = new Float64Array(buffer);
 		callback(view);
 		break;
 	default:
