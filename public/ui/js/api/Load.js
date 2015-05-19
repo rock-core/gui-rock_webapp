@@ -33,7 +33,7 @@ function get(url){
 		.always(function() {
 		//console.log( "complete" );
 		});
-	return jsonloader;
+	return loader;
 }
 
 /**
