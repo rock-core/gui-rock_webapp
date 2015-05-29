@@ -1,5 +1,20 @@
 plugin_path = "@CMAKE_SOURCE_DIR@/public" 
 
+#load dirs containing scripts
+environment.append_path File.join( '@CMAKE_SOURCE_DIR@' , 'public/ui/js')
+environment.append_path File.join( '@CMAKE_SOURCE_DIR@' , 'public/ui/tasks/js')
+environment.append_path File.join( '@CMAKE_SOURCE_DIR@' , 'public/ui/syskit/js')
+
+#load dirs containing css
+environment.append_path File.join( '@CMAKE_SOURCE_DIR@' , 'public/ui/css')
+environment.append_path File.join( '@CMAKE_SOURCE_DIR@' , 'public/ui/tasks/css')
+
+
+#load sprocket combined files
+environment.append_path File.join( '@CMAKE_SOURCE_DIR@' , 'sprockets')
+
+
+
 #map index page
 map '/' do
     run Rack::File.new( File.join(plugin_path, 'ui/index.html') )
