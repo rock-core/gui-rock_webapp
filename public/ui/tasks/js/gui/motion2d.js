@@ -1,7 +1,11 @@
 
-function motion2d(url,id){
+function motion2d(url,id, imageprefix){
 	
-	window[id] = new Motion2d(url,id);
+	if (typeof imageprefix === 'undefined'){
+		imageprefix = "";
+	}
+	
+	window[id] = new Motion2d(url,id,imageprefix);
 	
 	Typelib.getType(url,function(data){
 		window[id].command=data;
@@ -13,16 +17,18 @@ function motion2d(url,id){
 }
 
 
-function Motion2d(url, id){
+function Motion2d(url, id, imageprefix){
 	this.id = id;
 	this.command = {};
 	this.url = url;
 	this.write_url = url+"/write?timeout=300";
+	this.imageprefix = imageprefix;
 	
 	this.addMotion2DControl = function (){
 		var target = document.getElementById(this.id);
 		//target.innerHTML = document.getElementById('Motion2DControl').innerHTML;
-		target.innerHTML = getMotion2DHTML(this.id);
+		console.log(this.imageprefix)
+		target.innerHTML = getMotion2DHTML(this.id,this.imageprefix);
 	}
 	
 	this.updateDisplay = function(){
@@ -49,26 +55,26 @@ function Motion2d(url, id){
 }
 
 
-function getMotion2DHTML(id){
+function getMotion2DHTML(id,imageprefix){
 	var html = '\
 <div id=\"m2d\"> \
     <table border=0> \
 	<tr> \
 	<td></td> \
-	<td class="clickable"><img src="images/120px-Gnome-go-up.svg.png" alt="forward" onclick="window[\''+id+'\'].translation(0.1);" style="height: 50px; width: 50px;" ></td> \
+	<td class="clickable"><img src="'+imageprefix+'images/120px-Gnome-go-up.svg.png" alt="forward" onclick="window[\''+id+'\'].translation(0.1);" style="height: 50px; width: 50px;" ></td> \
 	<td><table> \
 			<tr><td style="float:right;">speed: </td><td><span id="'+id+'translation">0</span></td></tr> \
 			<tr><td style="float:right;">rot: </td><td><span id="'+id+'rotation">0</span></td></tr> \
 		</table></td>\
 	</tr> \
 	<tr> \
-	<td class="clickable"><img src="images/120px-Gnome-go-jump-left.svg.png" alt="left" onclick="window[\''+id+'\'].rotation(0.1);" style="height: 50px; width: 50px;" ></td> \
-	<td class="clickable"><img src="images/120px-Stop_hand.svg.png" alt="stop" onclick="window[\''+id+'\'].stop();" style="height: 50px; width: 50px; "></td> \
-	<td class="clickable"><img src="images/120px-Gnome-go-jump-right2.svg.png" alt="right" onclick="window[\''+id+'\'].rotation(-0.1);" style="height: 50px; width: 50px;" ></td> \
+	<td class="clickable"><img src="'+imageprefix+'images/120px-Gnome-go-jump-left.svg.png" alt="left" onclick="window[\''+id+'\'].rotation(0.1);" style="height: 50px; width: 50px;" ></td> \
+	<td class="clickable"><img src="'+imageprefix+'images/120px-Stop_hand.svg.png" alt="stop" onclick="window[\''+id+'\'].stop();" style="height: 50px; width: 50px; "></td> \
+	<td class="clickable"><img src="'+imageprefix+'images/120px-Gnome-go-jump-right2.svg.png" alt="right" onclick="window[\''+id+'\'].rotation(-0.1);" style="height: 50px; width: 50px;" ></td> \
 	</tr> \
 	<tr> \
 	<td></td> \
-	<td class="clickable"><img src="images/120px-Gnome-go-down.svg.png" alt="backward" onclick="window[\''+id+'\'].translation(-0.1);" style="height: 50px; width: 50px;" ></td> \
+	<td class="clickable"><img src="'+imageprefix+'images/120px-Gnome-go-down.svg.png" alt="backward" onclick="window[\''+id+'\'].translation(-0.1);" style="height: 50px; width: 50px;" ></td> \
 	<td></td> \
 	</tr> \
 	</table> \
