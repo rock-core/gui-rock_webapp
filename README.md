@@ -1,56 +1,84 @@
-= rock-webapp
 
-== DESCRIPTION:
+## DESCRIPTION:
 
-A REST API and in-browser UI to interface with a Rock system
-
-
-== FEATURES/PROBLEMS:
-Ports that provide bit messages are read very slowly, this can be sped up by usding the binary mode by setting the binary option
-PORTURL?binary=true 
+A Http and JavaScript files to be used with rock's rest api ("tools/rest_api")
 
 
-== Running
+## Running
 
 Just run
+    rock-webapp
 
-```
-rock-webapp
-```
 
 And open localhost:9292 in a browser (further api information there)
 
 
-== Syskit
-If your system is using syskit, you can start webapp from a bundle and interface with syskit using
+## Folder structure
 
-```
-rock-webapp --enable-syskit
-```
+public -- the folder that is served under localhost:9292/ui by rock-webapp
 
+ruby -- the ruby plugin that tells rock-webapp where to put the public folder
 
-= Addons
-
-You might want to add constom html/js control elements to use with the ui, to add them, you can set the 
-
-ROCK_WEBAPP_CUSTOM_PATH
-
-Environment variable to a folder, which is then presentes as localhost:9292/ui/addon/ for the browser.
+sprockets -- .js and .css files with definitions for the sprockets library (combined includes to be used in html files)
 
 
-= Folder structure
+## Using JS Libraries from this plugin
 
-rock/webapp/ -- main folder with grape initialization of subfolders 
-rock/webapp/syskit -- syskit related ruby code (server side)
-rock/webapp/tasks -- rock components related ruby code (server side)
-rock/webapp/ui -- html/js user interface
+This plugin provides a JavaScript API to access rock's http rest api.
 
-rock/webapp/ui/css -- common css styles
-rock/webapp/ui/js -- common JavaScript libraries
-rock/webapp/ui/syskit/ -- syskit related html
-rock/webapp/ui/syskit/js -- syskit related JavaScript libraries
-rock/webapp/ui/tasks/ -- rock components related html
-rock/webapp/ui/tasks/js -- rock components related JavaScript libraries
-rock/webapp/ui/tasks/js/api -- rock components JavaScript API
-rock/webapp/ui/tasks/js/gui -- rock JavaScript GUI elements (js)
+Any "callback" parameter is a function called after the asynchronous receive of the requested data
 
+### /assets/js/api.js
+
+    <script src="/assets/js/api.js"></script>
+
+Providing JavaScript level access to the rest API. api.js is a combination of needed .js files which is assembled server-side by sprockets.
+
+ Important functions:
+
+ * JSON.postObject(url,data)
+  * sends an JavaScript object as JSON formatted data using POST
+ * JSON.load = function (url)
+  * load JSON data from a url
+ * WebSockets.create(url, callback)
+  * creates a websocket with the given receive callback
+ * WebSockets.sendJSON(url,data)
+  * crates or re-uses an websocket object thatmust be deleted after use using WebSockets.delete(url)
+
+ * get(url)
+  * simple get call
+ * post(url,data);
+  * simple post call
+
+### /assets/js/taskapi.js
+
+    <script src="/assets/js/api.js"></script>
+
+includes /assets/js/api.js and extends it by task managing classes (Ports,Tasks,Typelib)
+
+ * Ports.getPort(url, callback)
+   * receive (buffered port information)
+ * Ports.read(url,callback)
+  * read port
+
+ * Tasks.getInfo(url, callback)
+  * receive task (buffered) information
+ * Tasks.loadInfo(url, callback)
+  * load task task information directly from url
+
+ * Typelib.getType(url, callback)
+  * returns a JavaScript type that can be used and directly re-written to a input port
+
+
+### /assets/js/taskgui.js
+
+    <script src="/assets/js/api.js"></script>
+
+Adds js gui classes to the above (includes taskapi.js and api.js)
+
+* taskmanager(url,id);
+ * add a taskmanager to the html element with "id"
+  * see public/ui/taskmanager.html
+* motion2d(url,id, imageprefix)
+ * add motion2d controls to id
+  * see public/ui/motion2d.html
